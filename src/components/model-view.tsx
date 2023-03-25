@@ -1,5 +1,5 @@
 import { Button, SvgIcon, Toolbar, Typography } from '@mui/material';
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { Model } from '../types/model';
 import { ModelInterface } from './model-interface';
 import { Train } from '@mui/icons-material';
@@ -13,6 +13,9 @@ export const ModelView: FunctionComponent<{
   project: Project
 }> = ({ model, project }) => {
   const [trainingAccuracy, setTrainingAccuracy] = useState<number | undefined>();
+  useEffect(() => {
+    setTrainingAccuracy(undefined);
+  }, [model]);
   return (
     <div className='model-view-container'>
       <div className='model-view-main-body'>
@@ -26,10 +29,7 @@ export const ModelView: FunctionComponent<{
             ) : null}
           </div>
           <Button onClick={() => {
-            trainModel(project, model).then(res => {
-              console.log(res);
-              return res;
-            }).then(res => setTrainingAccuracy(res.accuracy));
+            trainModel(project, model).then(res => setTrainingAccuracy(res.accuracy));
           }}>
             <SvgIcon component={Train} />
           </Button>
