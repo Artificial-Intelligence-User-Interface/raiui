@@ -2,6 +2,9 @@
   "name": "raiui",
   "version": "0.0.0",
   "description": "React Artificial Intelligence User Interface",
+  "engines": {
+    "node": "^19.8.1"
+  },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
