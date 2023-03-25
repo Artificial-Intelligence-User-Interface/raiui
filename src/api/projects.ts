@@ -1,4 +1,4 @@
-import { Project } from '../types/Project';
+import { Project } from '../types/project';
 import { baseUrl, headers } from './api';
 
 export async function getProjects(): Promise<Project[]> {
