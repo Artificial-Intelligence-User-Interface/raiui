@@ -1,6 +1,7 @@
 import { AppBar, Grid, MenuItem, Select, SelectChangeEvent, Toolbar, Typography } from '@mui/material';
 import React, { FunctionComponent } from 'react';
 import { Project } from '../types/Project';
+import './topbar.css';
 
 export const Topbar: FunctionComponent<{
   currentProject: Project | undefined,
@@ -14,34 +15,32 @@ export const Topbar: FunctionComponent<{
     setCurrentProject(allProjects.find(p => p.id === id));
   }
   return (
-    <AppBar>
-      <Toolbar>
+    <Toolbar>
+      <div style={{
+        width: '100%'
+      }}>
         <div style={{
-          width: '100%'
+          position: 'absolute',
+          left: '50%',
+          transform: 'translate(-50%)'
         }}>
-          <div style={{
-            position: 'absolute',
-            left: '50%',
-            transform: 'translate(-50%)'
-          }}>
-            <Typography variant='h6'>AIUI</Typography>
-          </div>
-          <span style={{
-            float: 'right'
-          }}>
-            <Select
-              value={currentProject?.id !== undefined ? currentProject.id : ''}
-              onChange={onProjectSelect}
-            >
-              {allProjects.map(p => {
-                return (
-                  <MenuItem key={p.id} value={p.id}>{p.name}</MenuItem>
-                );
-              })}
-            </Select>
-          </span>
+          <Typography variant='h6'>AIUI</Typography>
         </div>
-      </Toolbar>
-    </AppBar>
+        <span style={{
+          float: 'right'
+        }}>
+          <Select
+            value={currentProject?.id !== undefined ? currentProject.id : ''}
+            onChange={onProjectSelect}
+          >
+            {allProjects.map(p => {
+              return (
+                <MenuItem key={p.id} value={p.id}>{p.name}</MenuItem>
+              );
+            })}
+          </Select>
+        </span>
+      </div>
+    </Toolbar>
   );
 };
