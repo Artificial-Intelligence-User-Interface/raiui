@@ -30,12 +30,12 @@ export const Topbar: FunctionComponent<{
             float: 'right'
           }}>
             <Select
-              value={currentProject?.id}
+              value={currentProject?.id !== undefined ? currentProject.id : ''}
               onChange={onProjectSelect}
             >
               {allProjects.map(p => {
                 return (
-                  <MenuItem value={p.id}>{p.name}</MenuItem>
+                  <MenuItem key={p.id} value={p.id}>{p.name}</MenuItem>
                 );
               })}
             </Select>

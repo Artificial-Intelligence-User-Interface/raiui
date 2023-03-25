@@ -4,7 +4,7 @@ import { Topbar } from './components/topbar';
 import { Project } from './types/Project';
 
 const App: FunctionComponent = () => {
-  const [currentProject, setCurrentProject] = useState<Project>();
+  const [currentProject, setCurrentProject] = useState<Project | undefined>();
   const [allProjects, setAllProjects] = useState<Project[]>([{
     id: 'test',
     created: 0,
