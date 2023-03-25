@@ -2,6 +2,7 @@ import { FunctionComponent, useEffect, useState } from 'react';
 import { getModelsForProject } from './api/models';
 import { getProjects } from './api/projects';
 import './App.css';
+import { ModelView } from './components/model-view';
 import { Sidebar } from './components/sidebar';
 import { Topbar } from './components/topbar';
 import { Model } from './types/model';
@@ -11,6 +12,7 @@ const App: FunctionComponent = () => {
   const [currentProject, setCurrentProject] = useState<Project | undefined>();
   const [allProjects, setAllProjects] = useState<Project[]>([]);
   const [projectModels, setProjectModels] = useState<Model[]>([]);
+  const [currentModel, setCurrentModel] = useState<Model | undefined>();
   useEffect(() => {
     getProjects().then(setAllProjects);
   }, []);
@@ -30,8 +32,16 @@ const App: FunctionComponent = () => {
     <div className='App'>
       <Topbar currentProject={currentProject} setCurrentProject={setCurrentProject} allProjects={allProjects} setAllProjects={setAllProjects} />
       <div className='main-body'>
-        <Sidebar currentProject={currentProject} models={projectModels} setModels={setProjectModels} />
-        <div className='tab-area'></div>
+        <Sidebar
+          currentProject={currentProject}
+          models={projectModels}
+          setModels={setProjectModels}
+          currentModel={currentModel}
+          setCurrentModel={setCurrentModel}
+        />
+        <div className='tab-area'>
+          {currentModel ? <ModelView model={currentModel} /> : null}
+        </div>
       </div>
     </div>
   );

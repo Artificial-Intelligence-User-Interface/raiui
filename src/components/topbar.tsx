@@ -31,36 +31,38 @@ export const Topbar: FunctionComponent<{
     });
   }
   return (
-    <Toolbar>
-      <div style={{
-        width: '100%'
-      }}>
+    <div className='topbar'>
+      <Toolbar>
         <div style={{
-          position: 'absolute',
-          left: '50%',
-          transform: 'translate(-50%)'
+          width: '100%'
         }}>
-          <Typography variant='h6'>AIUI</Typography>
+          <div style={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translate(-50%)'
+          }}>
+            <Typography variant='h6'>AIUI</Typography>
+          </div>
+          <span style={{
+            float: 'right'
+          }}>
+            <Input placeholder='project-name' onChange={onNewModelNameChange} />
+            <Button onClick={createProject}>
+              <SvgIcon component={Add} />
+            </Button>
+            <Select
+              value={currentProject?.id !== undefined ? currentProject.id.toString() : ''}
+              onChange={onProjectSelect}
+            >
+              {allProjects.map(p => {
+                return (
+                  <MenuItem key={p.id} value={p.id.toString()}>{p.name}</MenuItem>
+                );
+              })}
+            </Select>
+          </span>
         </div>
-        <span style={{
-          float: 'right'
-        }}>
-          <Input placeholder='project-name' onChange={onNewModelNameChange} />
-          <Button onClick={createProject}>
-            <SvgIcon component={Add} />
-          </Button>
-          <Select
-            value={currentProject?.id !== undefined ? currentProject.id.toString() : ''}
-            onChange={onProjectSelect}
-          >
-            {allProjects.map(p => {
-              return (
-                <MenuItem key={p.id} value={p.id.toString()}>{p.name}</MenuItem>
-              );
-            })}
-          </Select>
-        </span>
-      </div>
-    </Toolbar>
+      </Toolbar>
+    </div>
   );
 };

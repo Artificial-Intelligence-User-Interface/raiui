@@ -1,0 +1,13 @@
+.interface-container {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+}
+.interface-input {
+  background-color: yellow;
+}
+.interface-output {
+  flex: 1 1 auto;
+  background-color: white;
+  padding: 0 5px;
+}

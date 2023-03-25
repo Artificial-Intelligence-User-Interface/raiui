@@ -12,8 +12,10 @@ import { saveDataset } from '../api/dataset';
 export const Sidebar: FunctionComponent<{
   currentProject: Project | undefined,
   models: Model[],
-  setModels: React.Dispatch<React.SetStateAction<Model[]>>
-}> = ({ currentProject, models, setModels }) => {
+  setModels: React.Dispatch<React.SetStateAction<Model[]>>,
+  currentModel: Model | undefined,
+  setCurrentModel: React.Dispatch<React.SetStateAction<Model | undefined>>
+}> = ({ currentProject, models, setModels, currentModel, setCurrentModel }) => {
   const [newModelName, setNewModelName] = useState('');
   function newModelNameChange(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) {
     setNewModelName(e.target.value);
@@ -57,7 +59,7 @@ export const Sidebar: FunctionComponent<{
         <TreeItem nodeId='models' label='Models'>
           {models.map(m => {
             return (
-              <TreeItem key={m.model_id} nodeId={m.model_id.toString()} label={m.name} />
+              <TreeItem key={m.model_id} nodeId={m.model_id.toString()} label={m.name} onClick={e => setCurrentModel(m)} />
             );
           })}
           <TreeItem nodeId='add' label={<div>
