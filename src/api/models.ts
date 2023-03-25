@@ -4,12 +4,12 @@ import { baseUrl, headers } from './api';
 
 export async function getModelsForProject(project: Project): Promise<Model[]> {
   const res = await fetch(baseUrl + '/aigateway/models/?' + new URLSearchParams({
-    project_id: project.id
+    project_id: project.id.toString()
   })).then(res => res.json()).then(res => res.models);
   return res;
 }
 
-export async function saveModel(model: Model | Omit<Model, 'id'>): Promise<Project> {
+export async function saveModel(model: Model | Omit<Model, 'model_id'>): Promise<Model> {
   const res = await fetch(baseUrl + '/aigateway/models/', {
     method: 'post',
     headers,

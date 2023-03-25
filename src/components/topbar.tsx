@@ -16,7 +16,7 @@ export const Topbar: FunctionComponent<{
 ) => {
   function onProjectSelect(event: SelectChangeEvent<string>) {
     const id = event.target.value;
-    setCurrentProject(allProjects.find(p => p.id === id));
+    setCurrentProject(allProjects.find(p => p.id.toString() === id));
   }
   let newModelName = useRef('');
   function onNewModelNameChange(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) {
@@ -50,12 +50,12 @@ export const Topbar: FunctionComponent<{
             <SvgIcon component={Add} />
           </Button>
           <Select
-            value={currentProject?.id !== undefined ? currentProject.id : ''}
+            value={currentProject?.id !== undefined ? currentProject.id.toString() : ''}
             onChange={onProjectSelect}
           >
             {allProjects.map(p => {
               return (
-                <MenuItem key={p.id} value={p.id}>{p.name}</MenuItem>
+                <MenuItem key={p.id} value={p.id.toString()}>{p.name}</MenuItem>
               );
             })}
           </Select>

@@ -30,7 +30,7 @@ const App: FunctionComponent = () => {
     <div className='App'>
       <Topbar currentProject={currentProject} setCurrentProject={setCurrentProject} allProjects={allProjects} setAllProjects={setAllProjects} />
       <div className='main-body'>
-        <Sidebar models={projectModels} />
+        <Sidebar currentProject={currentProject} models={projectModels} setModels={setProjectModels} />
         <div className='tab-area'></div>
       </div>
     </div>
