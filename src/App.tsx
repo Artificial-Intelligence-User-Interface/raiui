@@ -12,7 +12,7 @@ const App: FunctionComponent = () => {
     name: 'test'
   }]);
   return (
-    <div className="App">
+    <div className='App'>
       <Topbar currentProject={currentProject} setCurrentProject={setCurrentProject} allProjects={allProjects}></Topbar>
     </div>
   );
