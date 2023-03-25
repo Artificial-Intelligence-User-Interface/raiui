@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
+import { FunctionComponent, useState } from 'react';
 import './App.css';
+import { Topbar } from './components/topbar';
+import { Project } from './types/Project';
 
-function App() {
+const App: FunctionComponent = () => {
+  const [currentProject, setCurrentProject] = useState<Project>();
+  const [allProjects, setAllProjects] = useState<Project[]>([{
+    id: 'test',
+    created: 0,
+    last_updated: 0,
+    name: 'test'
+  }]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Topbar currentProject={currentProject} setCurrentProject={setCurrentProject} allProjects={allProjects}></Topbar>
     </div>
   );
 }
