@@ -1,4 +1,4 @@
-import { AppBar, Grid, MenuItem, Select, SelectChangeEvent, Toolbar, Typography } from '@mui/material';
+import { MenuItem, Select, SelectChangeEvent, Toolbar, Typography } from '@mui/material';
 import React, { FunctionComponent } from 'react';
 import { Project } from '../types/project';
 import './topbar.css';

@@ -8,7 +8,7 @@ export async function getProjects(): Promise<Project[]> {
   return res;
 }
 
-export async function saveProject(project: Omit<Project, 'id' | 'created' | 'last_updated'>): Promise<Project> {
+export async function saveProject(project: Project | Omit<Project, 'id' | 'created' | 'last_updated'>): Promise<Project> {
   const res = await fetch(baseUrl + '/aigateway/projects/', {
     method: 'post',
     headers,

@@ -1,6 +1,6 @@
 export interface Model {
-  id: number;
-  project: number;
+  model_id: number;
+  project_id: number;
   type: string;
   name: string;
 }
