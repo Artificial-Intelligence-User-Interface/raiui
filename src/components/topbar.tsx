@@ -1,8 +1,6 @@
 import { AppBar, Grid, MenuItem, Select, SelectChangeEvent, Toolbar, Typography } from '@mui/material';
 import React, { FunctionComponent } from 'react';
-import { transform } from 'typescript';
 import { Project } from '../types/Project';
-import './topbar.css';
 
 export const Topbar: FunctionComponent<{
   currentProject: Project | undefined,
