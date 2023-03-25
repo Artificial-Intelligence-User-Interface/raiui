@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { TreeItem, TreeView } from '@mui/lab';
-import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
+import { KeyboardArrowDown, KeyboardArrowRight } from '@mui/icons-material';
 import { Model } from '../types/model';
 import './sidebar.css';
 import { SvgIcon } from '@mui/material';
@@ -11,8 +11,8 @@ export const Sidebar: FunctionComponent<{
   return (
     <div className='sidebar'>
       <TreeView
-        defaultCollapseIcon={<SvgIcon component={KeyboardArrowUp} />}
-        defaultExpandIcon={<SvgIcon component={KeyboardArrowDown} />}
+        defaultCollapseIcon={<SvgIcon component={KeyboardArrowDown} />}
+        defaultExpandIcon={<SvgIcon component={KeyboardArrowRight} />}
       >
         <TreeItem nodeId='models' label='Models'>
           {models.map(m => {
