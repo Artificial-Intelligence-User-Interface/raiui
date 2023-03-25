@@ -40,7 +40,7 @@ const App: FunctionComponent = () => {
           setCurrentModel={setCurrentModel}
         />
         <div className='tab-area'>
-          {currentModel ? <ModelView model={currentModel} /> : null}
+          {currentModel && currentProject ? <ModelView model={currentModel} project={currentProject} /> : null}
         </div>
       </div>
     </div>

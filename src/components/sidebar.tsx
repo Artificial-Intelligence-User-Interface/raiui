@@ -3,7 +3,7 @@ import { TreeItem, TreeView } from '@mui/lab';
 import { KeyboardArrowDown, KeyboardArrowRight } from '@mui/icons-material';
 import { Model } from '../types/model';
 import './sidebar.css';
-import { Input, SvgIcon, Button, Select, MenuItem } from '@mui/material';
+import { Input, SvgIcon, Button, Select, MenuItem, Drawer } from '@mui/material';
 import { Add } from '@mui/icons-material';
 import { saveModel } from '../api/models';
 import { Project } from '../types/project';
@@ -28,7 +28,7 @@ export const Sidebar: FunctionComponent<{
     const model = await saveModel({
       project_id: currentProject.id,
       name: newModelName,
-      model_type: newModelType
+      type_model: newModelType
     });
     setModels([...models, model]);
   }

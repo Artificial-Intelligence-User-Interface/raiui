@@ -4,17 +4,28 @@ import { FunctionComponent, useState } from 'react';
 import { Model } from '../types/model';
 
 import './model-interface.css';
+import { runModel } from '../api/models';
+import { Project } from '../types/project';
 
 export const ModelInterface: FunctionComponent<{
-  model: Model
-}> = ({ model }) => {
+  model: Model,
+  project: Project
+}> = ({ model, project }) => {
   const [aiInput, setAIInput] = useState('');
-  const [aiOutput, setAIOutput] = useState<string[]>(['1', '2', '3']);
+  const [aiOutput, setAIOutput] = useState<string[]>([]);
   function onModelOut(out: string) {
     setAIOutput([...aiOutput, out]);
   }
   function sendInput() {
     setAIInput('');
+    const input: number[] = [];
+    const rawInput = aiInput.split(',');
+    for (const val of rawInput) {
+      const asInt = parseInt(val);
+      if (isNaN(asInt)) continue;
+      input.push(asInt);
+    }
+    runModel(project, model, input).then(console.log);
   }
   return (
     <div className='interface-container'>
