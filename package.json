@@ -1,0 +1,19 @@
+{
+  "name": "raiui",
+  "version": "0.0.0",
+  "description": "React Artificial Intelligence User Interface",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Artificial-Intelligence-User-Interface/raiui.git"
+  },
+  "author": "JD Flamm and Kaden Hart",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Artificial-Intelligence-User-Interface/raiui/issues"
+  },
+  "homepage": "https://github.com/Artificial-Intelligence-User-Interface/raiui#readme"
+}
