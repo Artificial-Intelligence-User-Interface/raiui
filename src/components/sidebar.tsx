@@ -3,7 +3,7 @@ import { TreeItem, TreeView } from '@mui/lab';
 import { KeyboardArrowDown, KeyboardArrowRight } from '@mui/icons-material';
 import { Model } from '../types/model';
 import './sidebar.css';
-import { Input, SvgIcon, Button } from '@mui/material';
+import { Input, SvgIcon, Button, Select, MenuItem } from '@mui/material';
 import { Add } from '@mui/icons-material';
 import { saveModel } from '../api/models';
 import { Project } from '../types/project';
@@ -17,6 +17,8 @@ export const Sidebar: FunctionComponent<{
   setCurrentModel: React.Dispatch<React.SetStateAction<Model | undefined>>
 }> = ({ currentProject, models, setModels, currentModel, setCurrentModel }) => {
   const [newModelName, setNewModelName] = useState('');
+  const [newModelType, setNewModelType] = useState('svm');
+  const modelTypes = ['svm', 'mlp'];
   function newModelNameChange(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) {
     setNewModelName(e.target.value);
   }
@@ -26,7 +28,7 @@ export const Sidebar: FunctionComponent<{
     const model = await saveModel({
       project_id: currentProject.id,
       name: newModelName,
-      model_type: 'blarg'
+      model_type: newModelType
     });
     setModels([...models, model]);
   }
@@ -64,6 +66,16 @@ export const Sidebar: FunctionComponent<{
           })}
           <TreeItem nodeId='add' label={<div>
             <Input onChange={newModelNameChange} value={newModelName} />
+            <Select
+              value={newModelType}
+              onChange={e => setNewModelType(e.target.value)}
+            >
+              {modelTypes.map((t, i) => {
+                return (
+                  <MenuItem key={i} value={t}>{t}</MenuItem>
+                );
+              })}
+            </Select>
             <Button onClick={createModel}>
               <SvgIcon component={Add} />
             </Button>
