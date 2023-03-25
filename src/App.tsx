@@ -28,7 +28,7 @@ const App: FunctionComponent = () => {
   }, [currentProject]);
   return (
     <div className='App'>
-      <Topbar currentProject={currentProject} setCurrentProject={setCurrentProject} allProjects={allProjects} />
+      <Topbar currentProject={currentProject} setCurrentProject={setCurrentProject} allProjects={allProjects} setAllProjects={setAllProjects} />
       <div className='main-body'>
         <Sidebar models={projectModels} />
         <div className='tab-area'></div>
