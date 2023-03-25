@@ -7,6 +7,7 @@ import { Input, SvgIcon, Button } from '@mui/material';
 import { Add } from '@mui/icons-material';
 import { saveModel } from '../api/models';
 import { Project } from '../types/project';
+import { saveDataset } from '../api/dataset';
 
 export const Sidebar: FunctionComponent<{
   currentProject: Project | undefined,
@@ -27,12 +28,32 @@ export const Sidebar: FunctionComponent<{
     });
     setModels([...models, model]);
   }
+  function onFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    if (!e.target.files || !currentProject) return;
+    const file = e.target.files[0];
+    saveDataset(file, file.name, currentProject);
+  }
   return (
     <div className='sidebar'>
       <TreeView
         defaultCollapseIcon={<SvgIcon component={KeyboardArrowDown} />}
         defaultExpandIcon={<SvgIcon component={KeyboardArrowRight} />}
       >
+        <TreeItem nodeId="dataset" label="Dataset">
+          <TreeItem nodeId='add' label={<div>
+            <Button
+              variant="contained"
+              component="label"
+            >
+              Upload File
+              <input
+                type="file"
+                hidden
+                onChange={onFileChange}
+              />
+            </Button>
+          </div>} />
+        </TreeItem>
         <TreeItem nodeId='models' label='Models'>
           {models.map(m => {
             return (

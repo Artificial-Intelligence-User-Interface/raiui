@@ -3,3 +3,6 @@ export const headers = {
   'Accept': 'application/json',
   'Content-Type': 'application/json'
 };
+export const fileUploadHeaders = {
+  'Accept': 'application/json'
+};
